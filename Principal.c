@@ -12,6 +12,8 @@ int main()
     int pot;
 
 	menu(numero, potencia, resultado);
+	
+	// feito alteração para teste no github.
 
 
 	destruir(numero);
