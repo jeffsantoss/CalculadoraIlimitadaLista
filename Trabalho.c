@@ -9,13 +9,13 @@ void menu(Lista *numero, Lista* potencia,Lista *resultado)
     char ch;
 	int num1, pot;
 
-	printf("Bem vindo a \"Smart Calculator\", a calculadora de potências ilimitadas! \n");
+	printf("Bem vindo a \"Smart Calculator\", a calculadora de potÃªncias ilimitadas! \n");
     printf("Selecione o que deseja fazer: \n");
-    printf("1 - Soma \n");
-    printf("2 - Multiplicacao \n");
-    printf("3 - Potencia \n");
-    printf("4 - Sair \n");
-    printf("\nEste programa foi desenvolvido por Eron Fernandes e Jefferson Santos. \n");
+    printf("\t\t1 - Soma \n");
+    printf("\t\t2 - Multiplicacao \n");
+    printf("\t\t3 - Potencia \n");
+    printf("\t\t4 - Sair \n");
+    printf("\n\t\tEste programa foi desenvolvido por Eron Fernandes e Jefferson Santos \n");
 
     ch = getch();
 
@@ -103,20 +103,20 @@ Lista * somar(Lista *operando1, Lista *operando2) //funcionando perfeitamente
             inserir_primeiro(operando1, 0);
     }
 
-    // soma do ultimo algarismo até o primeiro
+    // soma do ultimo algarismo atÃ© o primeiro
     // colocando as unidades no resultado e somando a dezena na proxima soma.
 	tam1 = tamanho(operando1);
 
 	while(tam1 > 0){
-        /*printf("Somando: \n");  // somando -------------------------------------------------
-	    imprimir(operando1);    // operando1 -----------------------------------------------
-        imprimir(operando2);    // operando2 -----------------------------------------------*/
-	    valor = ler_pos(operando1, tam1-1) + ler_pos(operando2, tam1-1) + valor/10 ;
-	    inserir_primeiro(resultadoSoma, valor%10);
-        tam1--;
+	        /*printf("Somando: \n");  // somando -------------------------------------------------
+		    imprimir(operando1);    // operando1 -----------------------------------------------
+	        imprimir(operando2);    // operando2 -----------------------------------------------*/
+		valor = ler_pos(operando1, tam1-1) + ler_pos(operando2, tam1-1) + valor/10 ; // valor/10 Ã© o "vai um" da operaÃ§Ã£o.
+		inserir_primeiro(resultadoSoma, valor%10);
+		tam1--;
 	}
 
-    // caso sobre uma dezena da soma do primeiro algarismo, ela é adicionada no inicio do numero.
+    // caso sobre uma dezena da soma do primeiro algarismo, ela Ã© adicionada no inicio do numero.
 	if(valor/10 > 0)
         inserir_primeiro(resultadoSoma, valor/10);
 /*
@@ -129,17 +129,17 @@ Lista * somar(Lista *operando1, Lista *operando2) //funcionando perfeitamente
 Lista * multiplicar(Lista * l, int n) // funcionando perfeitamente
 {
 	Lista * resultadoMult = criar();
-	int valor = 0; // resultado da multiplicação de 'n' por um valor da lista
+	int valor = 0; // resultado da multiplicaÃ§Ã£o de 'n' por um valor da lista
 	int tam;
 
     // multiplica 'n' por toda a lista 'l'
 	for(tam = tamanho(l); tam > 0; tam--)
     {
-		valor = n*ler_pos(l, tam-1) + valor/10;     //valor é um numero de dois digitos
+		valor = n*ler_pos(l, tam-1) + valor/10;     //valor Ã© um numero de dois digitos
 		inserir_primeiro(resultadoMult, valor%10);  // insere a unidade no final
 	}
 
-	// ao terminar a multiplicacao, insere o "vai um", que é a dezena, no inicio do numero;
+	// ao terminar a multiplicacao, insere o "vai um", que Ã© a dezena, no inicio do numero;
 	if(valor/10 > 0)
 		inserir_primeiro(resultadoMult, valor/10);
 
@@ -162,7 +162,7 @@ Lista * multiplicar_listas(Lista *operando1, Lista *operando2) // funcionando pe
             inserir_ultimo(resultado2, 0);
         }
         // como o resultado1 sempre vai pegar um valor de soma e vai perder o caminho para a lista original
-        // a variavel "lixo" sempre pega os endereços perdidos e destrói.
+        // a variavel "lixo" sempre pega os endereÃ§os perdidos e destrÃ³i.
         lixo = resultado1;
         resultado1 = somar(resultado1, resultado2);
         destruir(lixo);
